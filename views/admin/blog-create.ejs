@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://cdn.tiny.cloud/1/04zvtw11y6rdubglz0tpjqgg2zo8tbx77l3si374hogson6d/tinymce/8/tinymce.min.js"referrerpolicy="origin"crossorigin="anonymous"></script>
+
+    <title> <%= title %></title>
+</head>
+<body>
+    
+    <%- include("../partials/nav")  %> 
+
+    
+
+        <div class="container mt-3">
+
+            <form  method="post" enctype="multipart/form-data">
+            
+                <div class="row">
+                    <div class="col-md-12 mt-3">
+                        
+                        <div class="row mb-3">
+                            <label for="baslik" class="col-sm-2 col-form-label">Başlık</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="baslik" placeholder="Başlık" name="baslik">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="aciklama" class="col-sm-2 col-form-label">Açıklama</label>
+                            <div class="col-sm-10">
+                                <textarea id="editor" name="aciklama" class="form-control" ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="resim" class="col-sm-2 col-form-label">Resim</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control" id="resim" placeholder="resim" name="resim">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="resim" class="col-sm-2 col-form-label">Kategori</label>
+                            <div class="col-sm-10">
+                                <select name="kategori" id="kategori" class="form-control">
+                                    <option value="" selected>Seciniz</option>
+                                    <% categories.forEach(category => { %>
+                                        <option value="<%= category.categoryid %>"><%= category.name %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-10 offset-sm-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="anasayfa" name="anasayfa">
+                                    <label class="form-check-label" for="anasayfa">
+                                    Anasayfa
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-10 offset-sm-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="onay" name="onay">
+                                    <label class="form-check-label" for="onay">
+                                    Onay
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-10 offset-sm-2">
+
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </div>    
+                        </div>        
+                    </div>
+                        
+                </div>
+
+            </form>
+
+        </div>
+
+    <script>
+            tinymce.init({
+                selector: '#editor',
+                height: 350,
+                plugins: [
+                'anchor autolink charmap codesample emoticons link lists media table visualblocks wordcount'
+                ],
+                toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link media table | removeformat'
+            });
+    </script>
+
+</body>
+</html>
+
+
+
