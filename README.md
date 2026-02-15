@@ -1,121 +1,112 @@
-[readme.md](https://github.com/user-attachments/files/24600694/readme.md)
-# Blog Application (Node.js & Express)
+# Blog Application (Node.js, Express & Sequelize)
 
-Bu proje, **backend geliştirme mantığını öğrenmek** amacıyla geliştirilmiş bir blog uygulamasıdır. Proje boyunca Node.js ve Express kullanılarak routing, CRUD işlemleri, dosya yükleme ve MVC mimarisi gibi temel backend konuları uygulanmıştır.
+Bu proje, backend geliştirme mantığını öğrenmek amacıyla geliştirilmiş
+bir blog uygulamasıdır.\
+Proje boyunca Node.js ve Express kullanılarak routing, CRUD işlemleri,
+dosya yükleme, ORM kullanımı ve MVC mimarisi uygulanmıştır.
 
-> ⚠️ Bu proje bir **öğrenme projesidir**. Amaç; profesyonel bir ürün çıkarmaktan ziyade backend mantığını kavramaktır.
+⚠️ Bu proje bir öğrenme projesidir. Amaç; profesyonel bir ürün
+çıkarmaktan ziyade backend mimarisini ve gerçek dünya geliştirme
+süreçlerini kavramaktır.
 
----
+------------------------------------------------------------------------
 
 ## 🚀 Özellikler
 
-- Blog oluşturma, düzenleme ve silme (CRUD)
-- Kategori yönetimi
-- Admin paneli
-- Dosya (resim) yükleme
-- Sayfalama (pagination)
-- Server-side rendering (EJS)
-- MVC mimari yapısı
+-   Blog oluşturma, düzenleme ve silme (CRUD)
+-   Kategori yönetimi
+-   Admin paneli
+-   Dosya (resim) yükleme
+-   Sayfalama (Pagination)
+-   SEO uyumlu slug yapısı
+-   Server-side rendering (EJS)
+-   MVC mimari yapısı
+-   Sequelize ORM ile ilişkisel modelleme
 
----
+------------------------------------------------------------------------
 
 ## 🛠️ Kullanılan Teknolojiler
 
-- **Node.js**
-- **Express.js**
-- **MySQL**
-- **EJS** (Template Engine)
-- **Multer** (Dosya yükleme)
-- **dotenv**
-- **Git & GitHub**
+-   Node.js
+-   Express.js
+-   MySQL
+-   Sequelize ORM
+-   EJS (Template Engine)
+-   Multer (Dosya yükleme)
+-   dotenv
+-   Git & GitHub
 
----
+------------------------------------------------------------------------
 
 ## 📁 Proje Yapısı
 
-```
-blog-app/
-│
-├─ Router/          # Route tanımları
-├─ data/            # Database bağlantısı
-├─ helpers/         # Yardımcı fonksiyonlar
-├─ views/           # EJS view dosyaları
-│   ├─ admin/
-│   ├─ users/
-│   └─ partials/
-├─ public/          # Statik dosyalar
-├─ index.js         # Uygulama başlangıç noktası
-└─ package.json
-```
+blog-app/ │ ├─ controllers/ \# Controller katmanı ├─ models/ \#
+Sequelize modelleri ├─ routes/ \# Route tanımları ├─ helpers/ \#
+Yardımcı fonksiyonlar (slug vb.) ├─ views/ \# EJS view dosyaları │ ├─
+admin/ │ ├─ users/ │ └─ partials/ ├─ public/ \# Statik dosyalar ├─ data/
+\# DB bağlantı & seed dosyaları ├─ index.js \# Uygulama başlangıç
+noktası └─ package.json
 
----
+------------------------------------------------------------------------
 
 ## ⚙️ Kurulum
 
-1. Repoyu klonla:
-```bash
+Repoyu klonla:
+
 git clone https://github.com/mehmett09/blogapp.git
-```
 
-2. Proje klasörüne gir:
-```bash
+Proje klasörüne gir:
+
 cd blogapp
-```
 
-3. Bağımlılıkları yükle:
-```bash
+Bağımlılıkları yükle:
+
 npm install
-```
 
-4. `.env` dosyasını oluştur:
-```env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_password
+.env dosyasını oluştur:
+
+DB_HOST=localhost\
+DB_USER=root\
+DB_PASSWORD=your_password\
 DB_NAME=blogdb
-```
 
-5. Uygulamayı çalıştır:
-```bash
+Uygulamayı çalıştır:
+
 npm start
-```
 
----
+------------------------------------------------------------------------
 
 ## 🧠 Bu Projede Öğrendiklerim
 
-- Express.js ile routing mantığı
-- GET / POST request yapıları
-- CRUD işlemleri (Create, Read, Update, Delete)
-- Form yönetimi ve validation mantığı
-- Dosya upload (Multer)
-- MVC mimarisinin backend tarafındaki kullanımı
-- Git ile version control ve branch mantığı
+-   Express.js ile routing ve middleware mantığı
+-   CRUD işlemleri
+-   Sequelize ORM ile model ilişkileri (One-to-Many / Many-to-Many)
+-   Slug yapısı ile SEO uyumlu URL oluşturma
+-   Pagination sistemi
+-   Dosya upload (Multer)
+-   MVC mimarisi
+-   Git ile versiyonlama ve tag mantığı
 
----
+------------------------------------------------------------------------
 
 ## 🧪 Versiyonlama
 
-- `main` → Çalışan ve stabil sürüm
-- `v1.0` → Sequelize öncesi stabil versiyon
-- `sequelize` → ORM geçişi için geliştirme branch’i
+-   main → Stabil sürüm
+-   v1.0.0 → Sequelize öncesi stabil versiyon
+-   v2.0.0 → Sequelize, slug ve pagination eklenmiş stabil sürüm
 
----
+------------------------------------------------------------------------
 
 ## 🔮 Gelecek Planları
 
-- Sequelize ORM entegrasyonu
-- Authentication / Authorization
-- API versiyonu (REST)
-- Validation iyileştirmeleri
+-   Authentication / Authorization
+-   Role-based access control
+-   REST API versiyonu
+-   Validation iyileştirmeleri
+-   Frontend framework entegrasyonu
 
----
+------------------------------------------------------------------------
 
-## 📌 Not
+## 👤 Geliştirici
 
-Bu proje kişisel öğrenme sürecimin bir parçasıdır. Geri bildirim ve önerilere açıktır.
-
----
-
-👤 **Geliştirici**: Mehmet Yılmaz
-
+Mehmet Yılmaz
