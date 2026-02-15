@@ -22,7 +22,7 @@
                             <b><%= blog.baslik %></b> <br> isimli blog kaydini silmek istediğinize emin misiniz?
                         </p>
                         <form  method="post">
-                            <input type="hidden" name="blogid" value="<%= blog.blogid %>">
+                            <input type="hidden" name="id" value="<%= blog.id %>">
                             <button type="submit" class="btn btn-danger">Evet </button>
                             <a href="/admin/blog" class="btn btn-secondary">Hayır</a>
                         </form>

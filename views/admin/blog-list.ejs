@@ -16,7 +16,7 @@
             <div class="col-md12 mt-3">
                 <% if (action != "undefined" && action == "edit") { %>
                     <div class="alert alert-success">
-                        <%= blogid %>  id numarali  blog başarıyla güncellendi.
+                        <%= id %>  id numarali  blog başarıyla güncellendi.
                     </div>
                 <% } %>
                 <% if (action != "undefined" && action == "create") { %>
@@ -35,6 +35,7 @@
                             <th style="width: 50px;">id</th>
                             <th style="width: 200px;">resim</th>
                             <th>baslik</th>
+                            <th>Kategori</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -42,11 +43,16 @@
                     <tbody>
                         <% blogs.forEach(blog => { %>
                          <tr>
-                            <td>#<%= blog.blogid %></td>
-                            <td><img src="/images/<%= blog.resim %>" class="img-fluid" alt=""></td>
-                            <td><%= blog.baslik %></td>
-                            <td style="width: 100px;"><a class="btn btn-sm btn-primary" href="/admin/blogs/<%= blog.blogid %>">Düzenle</a></td>
-                            <td style="width: 100px;"><a class="btn btn-sm btn-danger" href="/admin/blog/delete/<%= blog.blogid %>">Sil</a></td>
+                            <td>#<%= blog.dataValues.id %></td>
+                            <td><img src="/images/<%= blog.dataValues.resim %>" class="img-fluid" alt=""></td>
+                            <td><%= blog.dataValues.baslik %></td>
+                            <td>
+                                <% blog.categories.forEach(c => { %>
+                                    <p><%= c.name %></p>
+                                <% }) %>
+                            </td>
+                            <td style="width: 100px;"><a class="btn btn-sm btn-primary" href="/admin/blogs/<%= blog.dataValues.id %>">Düzenle</a></td>
+                            <td style="width: 100px;"><a class="btn btn-sm btn-danger" href="/admin/blog/delete/<%= blog.dataValues.id %>">Sil</a></td>
                          </tr>
                         <% }) %>
                     </tbody>

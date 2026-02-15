@@ -16,7 +16,7 @@
             <div class="col-md12 mt-3">
                 <% if (typeof action !== "undefined" && action === "edit") { %>
                     <div class="alert alert-success">
-                        <%= categoryid %> id numaralı kategori başarıyla güncellendi.
+                        <%= id %> id numaralı kategori başarıyla güncellendi.
                     </div>
                 <% } %>
                 <% if (action != "undefined" && action == "create") { %>
@@ -42,11 +42,11 @@
                     <tbody>
                         <% categories.forEach(category => { %>
                          <tr>
-                            <td>#<%= category.categoryid %></td>
+                            <td>#<%= category.id %></td>
                             <td><%= category.name %></td>
                             
-                            <td style="width: 100px;"><a class="btn btn-sm btn-primary" href="/admin/categories/<%= category.categoryid %>">Düzenle</a></td>
-                            <td style="width: 100px;"><a class="btn btn-sm btn-danger" href="/admin/category/delete/<%= category.categoryid %>">Sil</a></td>
+                            <td style="width: 100px;"><a class="btn btn-sm btn-primary" href="/admin/categories/<%= category.id %>">Düzenle</a></td>
+                            <td style="width: 100px;"><a class="btn btn-sm btn-danger" href="/admin/category/delete/<%= category.id %>">Sil</a></td>
                          </tr>
                         <% }) %>
                     </tbody>
