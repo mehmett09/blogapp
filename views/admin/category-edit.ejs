@@ -16,31 +16,83 @@
         <div class="container mt-3">
 
 
-            <form  method="post">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
 
-                 <input type="hidden" name="categoryid" value="<%= category.categoryid %>">
-            
-                <div class="row">
-                    <div class="col-md-12 mt-3">
-                        
+                        <input type="hidden" name="id" value="<%= category.id %>">
+
                         <div class="row mb-3">
                             <label for="name" class="col-sm-2 col-form-label">Kategori Adı</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="name"  name="name" value="<%= category.name %>">
+                                <input type="text" class="form-control" id="name" name="name" value="<%= category.name %>">
                             </div>
                         </div>
-                        <div class="row mb-3">
+
+                        <div class="row">
                             <div class="col-sm-10 offset-sm-2">
                                 <button type="submit" class="btn btn-primary">Kaydet</button>
                             </div>
+                        </div>
 
-                    </div>
-                        
+                    </form>
                 </div>
+            </div>
 
-            </form>
+            <p>Blog Sayısı: <%= countBlogs %></p>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th style="width: 50px;">id</th>
+                        <th style="width: 200px;">resim</th>
+                        <th>baslik</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% blogs.forEach(blog => { %>
+                    <tr>
+                        <td>#<%= blog.dataValues.id %></td>
+                        <td><img src="/images/<%= blog.dataValues.resim %>" class="img-fluid" alt=""></td>
+                        <td><%= blog.dataValues.baslik %></td>
+                        <td style="width: 100px;"><a class="btn btn-sm btn-primary" href="/admin/blogs/<%= blog.dataValues.id %>">Düzenle</a></td>
+                        <td style="width: 100px;">
+                            
+
+                                <form 
+                                    style="display: inline-block;" 
+                                    action="/admin/categories/remove" 
+                                    method="post"
+                                    onsubmit="return confirm('Bu blogu bu kategoriden çıkarmak istediğine emin misin?')"
+                                    >
+                                    <input type="hidden" name="blogId" value="<%= blog.dataValues.id %>">
+                                    <input type="hidden" name="categoryId" value="<%= category.id %>">
+
+                                    <button type="submit" class="btn btn-sm btn-warning">
+                                        Kategoriden Çıkar
+                                    </button>
+                                </form>
+
+                                
+                                
+      
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+                    
+            </table>
+
+
+            
+
 
         </div>
+
+
+        
 
     
 

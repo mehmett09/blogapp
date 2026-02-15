@@ -22,7 +22,7 @@
                             <b><%= category.name %></b> <br> isimli kategori kaydini silmek istediğinize emin misiniz?
                         </p>
                         <form  method="post">
-                            <input type="hidden" name="categoryid" value="<%= category.categoryid %>">
+                            <input type="hidden" name="id" value="<%= category.id %>">
                             <button type="submit" class="btn btn-danger">Evet </button>
                             <a href="/admin/categories" class="btn btn-secondary">Hayır</a>
                         </form>

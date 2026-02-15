@@ -1,20 +1,29 @@
 <!-- pagination -->
 <nav>
     <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a href="" class="page-link">Geri</a>
+
+        <!-- Geri -->
+        <li class="page-item <%= currentPage == 1 ? 'disabled' : '' %>">
+            <a class="page-link" href="/blog?page=<%= currentPage - 1 %>">
+                Geri
+            </a>
         </li>
-        <li class="page-item active">
-            <a href="" class="page-link">1</a>
+
+        <!-- Sayfa Numaraları -->
+        <% for(let i = 1; i <= totalPages; i++) { %>
+            <li class="page-item <%= i == currentPage ? 'active' : '' %>">
+                <a class="page-link" href="/blog?page=<%= i %>">
+                    <%= i %>
+                </a>
+            </li>
+        <% } %>
+
+        <!-- İleri -->
+        <li class="page-item <%= currentPage == totalPages ? 'disabled' : '' %>">
+            <a class="page-link" href="/blog?page=<%= currentPage + 1 %>">
+                İleri
+            </a>
         </li>
-        <li class="page-item">
-            <a href="" class="page-link">2</a>
-        </li>
-        <li class="page-item">
-            <a href="" class="page-link">3</a>
-        </li>
-        <li class="page-item">
-            <a href="" class="page-link">İleri</a>
-        </li>
+
     </ul>
 </nav>

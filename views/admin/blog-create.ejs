@@ -17,7 +17,7 @@
 
         <div class="container mt-3">
 
-            <form  method="post" enctype="multipart/form-data">
+            <form  method="post" enctype="multipart/form-data" action="/admin/blog/create">
             
                 <div class="row">
                     <div class="col-md-12 mt-3">
@@ -26,6 +26,13 @@
                             <label for="baslik" class="col-sm-2 col-form-label">Başlık</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="baslik" placeholder="Başlık" name="baslik">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="altbaslik" class="col-sm-2 col-form-label">Alt Başlık</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="altbaslik" placeholder="Alt Başlık" name="altbaslik">
                             </div>
                         </div>
 
@@ -44,16 +51,28 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="resim" class="col-sm-2 col-form-label">Kategori</label>
+                            <label class="col-sm-2 col-form-label">Kategori</label>
+
                             <div class="col-sm-10">
-                                <select name="kategori" id="kategori" class="form-control">
-                                    <option value="" selected>Seciniz</option>
-                                    <% categories.forEach(category => { %>
-                                        <option value="<%= category.categoryid %>"><%= category.name %></option>
-                                    <% }) %>
-                                </select>
+                                <% categories.forEach(category => { %>
+                                <div class="form-check">
+                                    <input 
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        name="categories[]"
+                                        value="<%= category.id %>"
+                                        id="category_<%= category.id %>"
+                                        >
+                                        <label 
+                                        class="form-check-label"
+                                        for="category_<%= category.id %>"
+                                        >
+                                        <%= category.name %>
+                                        </label>
+                                </div>
+                                <% }) %>
                             </div>
-                        </div>
+                            </div>
 
                         <div class="row mb-3">
                             <div class="col-sm-10 offset-sm-2">

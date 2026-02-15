@@ -16,13 +16,13 @@
 
         <div class="container mt-3">
 
-            <form action="/admin/blogs/<%= blog.blogid %>" method="post" enctype="multipart/form-data">
+            <form action="/admin/blogs/<%= blog.id %>" method="post" enctype="multipart/form-data">
 
             
                 <div class="row">
                     <div class="col-md-12 mt-3">
 
-                        <input type="hidden" name="blogid" value="<%= blog.blogid %>">
+                        <input type="hidden" name="id" value="<%= blog.id %>">
                         <input type="hidden" name="eskiResim" value="<%= blog.resim %>">
                         
                         <div class="row mb-3">
@@ -32,6 +32,21 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="altbaslik" class="col-sm-2 col-form-label">Alt Başlık</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="altbaslik" placeholder="Alt Başlık" name="altbaslik" value="<%= blog.altbaslik %>">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="url" class="col-sm-2 col-form-label">Url</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="url" placeholder="Url" name="url" value="<%= blog.url %>">
+                            </div>
+                        </div>
+                        
+                        
                         <div class="row mb-3">
                             <label for="aciklama" class="col-sm-2 col-form-label">Açıklama</label>
                             <div class="col-sm-10">
@@ -48,23 +63,30 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="resim" class="col-sm-2 col-form-label">Kategori</label>
+                            <label class="col-sm-2 col-form-label">Kategori</label>
+
                             <div class="col-sm-10">
-                                <select name="kategori" id="kategori" class="form-control">
-                                    <option value="" selected>Seciniz</option>
-                                    <% categories.forEach(category => { %>
-
-                                        <% if (category.categoryid == blog.categoryid) { %>
-                                            <option value="<%= category.categoryid %>" selected><%= category.name %></option>
-                                        <% } else { %>
-                                            <option value="<%= category.categoryid %>"><%= category.name %></option>
-                                        <% } %>
-
-                                        
-                                    <% }) %>
-                                </select>
+                                <% categories.forEach(category => { %>
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        name="categories[]"
+                                        value="<%= category.id %>"
+                                        id="category_<%= category.id %>"
+                                        <%= blog.categories.some(c => c.id === category.id) ? 'checked' : '' %>
+                                    >
+                                    <label
+                                        class="form-check-label"
+                                        for="category_<%= category.id %>"
+                                        >
+                                    <%= category.name %>
+                                    </label>
+                                </div>
+                                <% }) %>
                             </div>
                         </div>
+
 
                         <div class="row mb-3">
                             <div class="col-sm-10 offset-sm-2">

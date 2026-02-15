@@ -25,6 +25,45 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use(adminRoutes);
 
 app.use(userRoutes);
+
+const sequelize = require('./data/db');
+const dummyData = require('./data/dummy-data');
+
+const Blog = require('./models/blog');
+const Category = require('./models/category');
+const { time } = require('console');
+
+
+// iliskiler
+// one to many
+// Category.hasMany(Blog, {
+//     foreignKey: 'categoryId',
+//     allowNull: false
+// });
+// Blog.belongsTo(Category, {
+//     foreignKey: 'categoryId'
+// });
+
+// many to many
+ 
+Blog.belongsToMany(Category, { through: 'blogcategories', as: 'categories', foreignKey: 'blogId', timestamps: false });
+Category.belongsToMany(Blog, { through: 'blogcategories', as: 'blogs', foreignKey: 'categoryId', timestamps: false });
+
+
+
+
+// IIFE
+(async () => {
+  await sequelize.sync();
+
+  await dummyData();
+})();
+
+
+
+
+
+
 // app.use("libs",express.static('node_modules'));
 // app.use("static",express.static('public'));
 
@@ -51,9 +90,9 @@ app.use(userRoutes);
 //     res.send('<h1>This is about page</h1>'); 
 // });  
 
-// app.use("/blog/:blogid", function (req, res) {
+// app.use("/blog/:id", function (req, res) {
 //     // console.log(req.params);
-//     // console.log(req.params.blogid);
+//     // console.log(req.params.id);
 //     // console.log(req.params.username);
 //     // res.send('<h1>This is blog detail page</h1>');
 //     // console.log(__dirname);
