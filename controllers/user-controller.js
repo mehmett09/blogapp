@@ -2,7 +2,7 @@ const Blog = require('../models/blog');
 const Category = require('../models/category');
 
 const { Op, where } = require('sequelize');
-const { router } = require('../Router/users');
+// const  router  = require('../router/users');
 
 
 exports.blog_by_category = async function (req, res) {

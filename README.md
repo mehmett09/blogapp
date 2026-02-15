@@ -40,23 +40,26 @@ süreçlerini kavramaktır.
 
 ## 📁 Proje Yapısı
 
-bblog-app/
-│
-├─ controllers/     # Controller katmanı
-├─ models/          # Sequelize modelleri
-├─ routes/          # Route tanımları
-├─ helpers/         # Yardımcı fonksiyonlar (slug vb.)
-├─ views/           # EJS view dosyaları
-│   ├─ admin/
-│   ├─ users/
-│   └─ partials/
-├─ public/          # Statik dosyalar
-├─ data/            # DB bağlantı & seed dosyaları
-├─ index.js         # Uygulama başlangıç noktası
-└─ package.json
+```text
+blog-app/
+├── 📁 controllers/    # Controller katmanı
+├── 📁 models/         # Sequelize modelleri
+├── 📁 routes/         # Route tanımları
+├── 📁 helpers/        # Yardımcı fonksiyonlar (slug vb.)
+├── 📁 views/          # EJS view dosyaları
+│   ├── 📁 admin/
+│   ├── 📁 users/
+│   └── 📁 partials/
+├── 📁 public/         # Statik dosyalar
+├── 📁 data/           # DB bağlantı & seed dosyaları
+├── 📄 index.js        # Uygulama başlangıç noktası
+└── 📄 package.json    # Bağımlılıklar
 
 ------------------------------------------------------------------------
 
+## ⚙️ Kurulum
+
+```bash
 # 1️⃣ Repoyu klonla
 git clone https://github.com/mehmett09/blogapp.git
 
@@ -67,7 +70,6 @@ cd blogapp
 npm install
 
 # 4️⃣ .env dosyasını oluştur ve aşağıdaki bilgileri ekle
-
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_password
@@ -75,6 +77,7 @@ DB_NAME=blogdb
 
 # 5️⃣ Uygulamayı başlat
 npm start
+```
 
 ------------------------------------------------------------------------
 
